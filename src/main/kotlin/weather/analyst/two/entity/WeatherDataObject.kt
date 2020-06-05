@@ -10,9 +10,10 @@ import javax.persistence.TemporalType
 
 @Entity
 @Data
-class WeatherDataObject (@Id @GeneratedValue var id: Int,
+data class WeatherDataObject (@Id @GeneratedValue var id: Long,
                          var currentTemp: Double,
                          var minTemp: Double,
+                         var maxTemp: Double,
                          var humidity: Int,
                          var weatherDesc: String,
                          var windSpeed: Double,

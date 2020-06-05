@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository
 import weather.analyst.two.entity.WeatherDataObject
 
 @Repository
-interface WeatherDataObjectRepository : CrudRepository<WeatherDataObject, Int> {
+interface WeatherDataObjectRepository : CrudRepository<WeatherDataObject, Long> {
 }

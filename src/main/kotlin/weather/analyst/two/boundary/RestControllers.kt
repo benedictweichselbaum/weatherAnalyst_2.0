@@ -4,19 +4,15 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import weather.analyst.two.controller.WeatherInformationService
-import java.net.URI
+import weather.analyst.two.boundary.dto.CurrentWeatherDTO
+import weather.analyst.two.controller.GetCurrentWeatherAggregator
 
 @RestController
 @RequestMapping("/weather")
 class WeatherController (
-        val weatherInformationService: WeatherInformationService
+        private val getCurrentWeatherAggregator: GetCurrentWeatherAggregator
 ) {
-
-    @GetMapping("/test")
-    fun getTest () = "Hallo"
-
-    // TODO: Implement
     @GetMapping("/current_weather")
-    fun getCurrentWeatherInformation () : ResponseEntity<Void> = ResponseEntity.ok().build()
+    fun getCurrentWeatherInformation () : ResponseEntity<CurrentWeatherDTO> =
+            ResponseEntity.ok().body(this.getCurrentWeatherAggregator.processGetCurrentWeatherRequest())
 }
