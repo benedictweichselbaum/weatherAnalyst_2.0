@@ -2,8 +2,10 @@ package weather.analyst.two.boundary.dto
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import lombok.Data
+import lombok.NoArgsConstructor
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
 data class CurrentWeatherOpenWeather (
         var coord: Coordinates,
         var weather: List<WeatherDescription>,
@@ -13,14 +15,15 @@ data class CurrentWeatherOpenWeather (
         var wind: Wind,
         var clouds: Clouds,
         var dt: Long,
-        var svs: AdditionalInformation,
+        var sys: AdditionalInformation,
         var timezone: Int,
         var id: Long,
         var name: String,
         var cod: Int
 ) {
     @Data
-    inner class AdditionalInformation (
+    @NoArgsConstructor
+    class AdditionalInformation (
         var type: Int,
         var id: Int,
         var country: String,
@@ -29,28 +32,32 @@ data class CurrentWeatherOpenWeather (
     )
 
     @Data
-    inner class Clouds (
+    @NoArgsConstructor
+    class Clouds (
         var all: Int
     )
 
     @Data
-    inner class Coordinates (
+    @NoArgsConstructor
+    class Coordinates (
         var lon: Double,
         var lat: Double
     )
 
     @Data
-    inner class MainInformation (
-        var temp: Double,
-        var feelsLike: Double,
-        var temp_min: Double,
-        var temp_max: Double,
-        var pressure: Int,
-        var humidity: Int
+    @NoArgsConstructor
+    class MainInformation (
+            var temp: Double,
+            var feelsLike: Double,
+            var temp_min: Double,
+            var temp_max: Double,
+            var pressure: Int,
+            var humidity: Int
     )
 
     @Data
-    inner class WeatherDescription (
+    @NoArgsConstructor
+    class WeatherDescription (
         var id: Int,
 
         // Main weather information like 'Clouds'
@@ -60,7 +67,8 @@ data class CurrentWeatherOpenWeather (
     )
 
     @Data
-    inner class Wind (
+    @NoArgsConstructor
+    class Wind (
         var speed: Double,
 
         // Degree

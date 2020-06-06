@@ -1,16 +1,12 @@
 package weather.analyst.two.entity
 
-import lombok.Data
 import org.springframework.data.jpa.repository.Temporal
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.TemporalType
+import javax.persistence.*
 
 @Entity
-@Data
-data class WeatherDataObject (@Id @GeneratedValue var id: Long,
+@Table(name = "weather_data_object", schema = "weatherDB")
+data class WeatherDataObject (@Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
                          var currentTemp: Double,
                          var minTemp: Double,
                          var maxTemp: Double,

@@ -9,19 +9,18 @@ class WeatherDataMapper {
     companion object {
         fun mapOpenObjectToEntity(openWeatherObject: CurrentWeatherOpenWeather): WeatherDataObject =
                 WeatherDataObject(
-                        openWeatherObject.id,
-                        openWeatherObject.main.temp,
-                        openWeatherObject.main.temp_min,
-                        openWeatherObject.main.temp_max,
-                        openWeatherObject.main.humidity,
-                        openWeatherObject.weather[0].description,
-                        openWeatherObject.wind.speed,
-                        Calendar.getInstance().time
+                        currentTemp = openWeatherObject.main.temp,
+                        minTemp = openWeatherObject.main.temp_min,
+                        maxTemp = openWeatherObject.main.temp_max,
+                        humidity = openWeatherObject.main.humidity,
+                        weatherDesc = openWeatherObject.weather[0].description,
+                        windSpeed = openWeatherObject.wind.speed,
+                        timeStamp = Calendar.getInstance().time
                 )
 
-        fun mapOpenObjectToDTO(openWeatherObject: CurrentWeatherOpenWeather): CurrentWeatherDTO =
+        fun mapOpenObjectToDTO(openWeatherObject: CurrentWeatherOpenWeather, id: Long): CurrentWeatherDTO =
                 CurrentWeatherDTO(
-                        openWeatherObject.id,
+                        id,
                         openWeatherObject.main.temp,
                         openWeatherObject.main.temp_min,
                         openWeatherObject.main.temp_max,
